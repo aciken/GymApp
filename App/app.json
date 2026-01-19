@@ -1,0 +1,60 @@
+{
+  "expo": {
+    "name": "GymApp",
+    "slug": "GymApp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/BoostLogo1.png",
+    "userInterfaceStyle": "dark",
+    "scheme": "GymApp",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.aciken.GymApp",
+      "buildNumber": "10",
+      "entitlements": {
+        "com.apple.developer.applesignin": [
+          "Default",
+          "Default"
+        ]
+      },
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": [
+              "com.googleusercontent.apps.451475688741-f88vp91ttocl4of0lv8ja22m7d9ttqip"
+            ]
+          }
+        ]
+      }
+    },
+    "android": {
+      "versionCode": 9,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.aciken.GymApp"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-apple-authentication"
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "7a74b131-1cfb-4e8a-a090-aa7d15ecfe2b"
+      }
+    }
+  }
+}
