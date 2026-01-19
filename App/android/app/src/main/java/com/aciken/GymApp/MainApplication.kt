@@ -1,4 +1,4 @@
-package com.aciken.Testosterone
+package com.aciken.GymApp
 
 import android.app.Application
 import android.content.res.Configuration

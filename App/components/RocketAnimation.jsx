@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, Image, Animated, Dimensions, Easing } from 'react-native';
+import { View, StyleSheet, Animated, Dimensions, Easing } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons } from '@expo/vector-icons';
 
 const { width, height } = Dimensions.get('window');
 
@@ -152,8 +153,7 @@ const RocketAnimation = ({ onAnimationFinish }) => {
             style={styles.gradient}
           />
         </Animated.View>
-        <Animated.Image
-          source={require('../assets/RocketWhite.png')}
+        <Animated.View
           style={[
             styles.rocket,
             {
@@ -161,7 +161,9 @@ const RocketAnimation = ({ onAnimationFinish }) => {
               transform: [{ scale: rocketScale }, { translateY: rocketTranslateY }],
             },
           ]}
-        />
+        >
+          <Ionicons name="rocket-outline" size={170} color="#FFFFFF" />
+        </Animated.View>
       </Animated.View>
       
       <Animated.Text style={[styles.logoText, { opacity: textOpacity }]}>
@@ -205,7 +207,8 @@ const styles = StyleSheet.create({
   rocket: {
     width: 200,
     height: 200,
-    resizeMode: 'contain',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   logoText: {
     position: 'absolute',

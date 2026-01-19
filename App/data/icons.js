@@ -1,21 +1,24 @@
+// NOTE: These used to be local image assets (require('../assets/...')).
+// If you delete assets, Metro bundling fails even if you guard at runtime.
+// We now use Ionicons icon *names* so the app can bundle with zero local images.
 export const taskIcons = {
-    '1': require('../assets/SunColor.png'),
-    '2': require('../assets/TrainingColor2.png'),
-    '3': require('../assets/FoodColor1.png'),
-    '4': require('../assets/BedColor2.png'),
-    '5': require('../assets/PillColor2.png'),
-    'd1': require('../assets/FistColor.png'),
-    'd2': require('../assets/AngryColor2.png'),
-    'd3': require('../assets/BeerColor.png')
+  '1': 'sunny',
+  '2': 'barbell',
+  '3': 'restaurant',
+  '4': 'bed',
+  '5': 'flask',
+  'd1': 'hand-left',
+  'd2': 'alert-circle',
+  'd3': 'wine',
 };
 
 export const taskIconsGrayscale = {
-    '1': require('../assets/Sun.png'),
-    '2': require('../assets/Training.png'),
-    '3': require('../assets/Food.png'),
-    '4': require('../assets/Bed.png'),
-    '5': require('../assets/Pill.png'),
-    'd1': require('../assets/Fist.png'),
-    'd2': require('../assets/Angry.png'),
-    'd3': require('../assets/Beer.png')
+  '1': 'sunny-outline',
+  '2': 'barbell-outline',
+  '3': 'restaurant-outline',
+  '4': 'bed-outline',
+  '5': 'flask-outline',
+  'd1': 'hand-left-outline',
+  'd2': 'alert-circle-outline',
+  'd3': 'wine-outline',
 };

@@ -1,4 +1,4 @@
-package com.aciken.Testosterone
+package com.aciken.GymApp
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

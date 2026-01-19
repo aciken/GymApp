@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Animated, Easing } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Animated, Easing } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
@@ -15,16 +15,6 @@ const TodoCard = ({ todo, onPress, isEditable }) => {
       return (
         <View style={[styles.todoCard, styles.errorCard]}>
           <Text style={styles.errorText}>Error: Invalid task data.</Text>
-        </View>
-      );
-    }
-
-    // Safety Check 2: Verify that the image exists before trying to render it.
-    if (!todo.image) {
-      console.error("TodoCard_ERROR: Missing 'todo.image' for task:", todo.task);
-      return (
-        <View style={[styles.todoCard, styles.errorCard]}>
-          <Text style={styles.errorText}>Error: Missing image for "{todo.task}"</Text>
         </View>
       );
     }
@@ -111,7 +101,13 @@ const TodoCard = ({ todo, onPress, isEditable }) => {
         onPress={isEditable ? onPress : null}
         activeOpacity={isEditable ? 0.7 : 1}
       >
-        <ImageBackground source={todo.image} style={styles.imageBackground} imageStyle={styles.imageStyle}>
+        <View style={styles.imageBackground}>
+          <Ionicons
+            name={todo.icon || 'fitness-outline'}
+            size={160}
+            color="rgba(255,255,255,0.07)"
+            style={styles.watermarkIcon}
+          />
           <Animated.View style={{...StyleSheet.absoluteFillObject, opacity: blurOpacity }}>
             {(isCompleted || isFailed) && <BlurView intensity={30} tint={(isFailed || isNegative) ? "dark" : "light"} style={StyleSheet.absoluteFill} />}
           </Animated.View>
@@ -144,7 +140,7 @@ const TodoCard = ({ todo, onPress, isEditable }) => {
               </View>
             </View>
           </LinearGradient>
-        </ImageBackground>
+        </View>
       </AnimatedTouchableOpacity>
     );
   } catch (error) {
@@ -188,9 +184,12 @@ const styles = StyleSheet.create({
   imageBackground: {
     flex: 1,
     justifyContent: 'space-between',
+    backgroundColor: 'rgba(255,255,255,0.03)',
   },
-  imageStyle: {
-    borderRadius: 20,
+  watermarkIcon: {
+    position: 'absolute',
+    right: -10,
+    bottom: -10,
   },
   gradient: {
     flex: 1,

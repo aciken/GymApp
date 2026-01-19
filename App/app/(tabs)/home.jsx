@@ -4,7 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
-import { Asset } from 'expo-asset';
+// NOTE: We no longer preload local image assets. The app can run with zero local images.
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import TaskDetailModal from '../../components/TaskDetailModal';
@@ -591,25 +591,9 @@ export default function HomeScreen() {
     if (todosByDay[newDay] && !isDayChanging) {
       setIsDayChanging(true); // Show loader immediately
 
-      const nextDayTasks = [...(todosByDay[newDay].dos || []), ...(todosByDay[newDay].donts || [])];
-      const imagesToLoad = nextDayTasks.map(task => task.image).filter(Boolean);
-
-      const assetPromises = imagesToLoad.map(image => {
-        return Asset.fromModule(image).downloadAsync();
-      });
-
-      Promise.all(assetPromises)
-        .then(() => {
-          // All images are pre-loaded, now update the view
-          setCurrentDay(newDay);
-          setIsDayChanging(false);
-        })
-        .catch(error => {
-          console.warn('Error pre-loading images:', error);
-          // Even if pre-loading fails, proceed to show the next day
-          setCurrentDay(newDay);
-          setIsDayChanging(false);
-        });
+      // No asset preloading needed anymore (removed all local images).
+      setCurrentDay(newDay);
+      setIsDayChanging(false);
     }
   };
 

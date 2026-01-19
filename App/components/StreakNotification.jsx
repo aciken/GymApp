@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -34,9 +34,11 @@ const StreakNotification = ({ title, message, streakCount, icon }) => {
                     </View>
                 </View>
                 <View style={styles.rightContent}>
-                    <Image
-                        source={require('../assets/StreakImage3.png')}
-                        style={styles.streakImage}
+                    <Ionicons
+                        name="flame-outline"
+                        size={96}
+                        color="rgba(255,255,255,0.16)"
+                        style={styles.streakIcon}
                     />
                     <View style={styles.streakTextContainer}>
                         <Text style={styles.streakNumber}>{streakCount}</Text>
@@ -119,11 +121,9 @@ const styles = StyleSheet.create({
         borderColor: '#FFFFFF',
         borderStyle: 'solid',
     },
-    streakImage: {
+    streakIcon: {
         position: 'absolute',
-        width: 100,
-        height: 100,
-        opacity: 0.5,
+        opacity: 0.9,
     },
     streakTextContainer: {
         width: 80,

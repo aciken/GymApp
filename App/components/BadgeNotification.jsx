@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet, Animated, Easing } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Animated, Easing } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Haptics from 'expo-haptics';
 import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
+import IconBadge from './IconBadge';
 
 const BadgeNotification = ({ badge, onDismiss }) => {
     const [isRevealed, setIsRevealed] = useState(false);
@@ -78,7 +79,7 @@ const BadgeNotification = ({ badge, onDismiss }) => {
                     <LinearGradient colors={['#2a2a2a', '#111111']} style={styles.gradient}>
                         <View style={styles.unrevealedImageContainer}>
                             <Animated.View style={[styles.unrevealedGlow, { transform: [{ scale: pulseAnim }] }]} />
-                            <Image source={require('../assets/newBadge.png')} style={styles.unrevealedImage} />
+                            <IconBadge icon="gift-outline" size={150} />
                         </View>
                         <Text style={styles.unrevealedTitle}>Reward Unlocked</Text>
                         <Text style={styles.unrevealedSubtitle}>Tap to reveal</Text>
@@ -92,7 +93,7 @@ const BadgeNotification = ({ badge, onDismiss }) => {
                             <Ionicons name="close" size={28} color="rgba(255, 255, 255, 0.7)" />
                         </TouchableOpacity>
                         <Animated.View style={[styles.badgeImageContainer, { shadowColor: badge.glowColor, transform: [{scale: badgeScale}] }]}>
-                            <Image source={badge.image} style={styles.badgeImage} />
+                            <IconBadge icon={badge.icon || 'trophy-outline'} size={190} backgroundColor="rgba(0,0,0,0.12)" borderColor="rgba(255,255,255,0.18)" />
                         </Animated.View>
                         <Text style={styles.badgeName}>{badge.name}</Text>
                         <Text style={styles.badgeDescription}>{badge.description}</Text>
@@ -151,10 +152,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 1,
         shadowRadius: 40,
     },
-    unrevealedImage: {
-        width: '100%',
-        height: '100%',
-    },
     unrevealedTitle: {
         color: '#FFFFFF',
         fontSize: 32,
@@ -181,10 +178,6 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 1,
         shadowRadius: 30,
-    },
-    badgeImage: {
-        width: '100%',
-        height: '100%',
     },
     badgeName: {
         color: '#FFFFFF',
